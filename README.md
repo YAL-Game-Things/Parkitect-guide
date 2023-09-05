@@ -1,0 +1,23 @@
+A collection of things that I would usually explain when introducing friends to the game, now in a guide format. How things work and what you can do.
+
+## Table of contents
+- [Intro](0000-Intro.md)
+- [Paths](0100-Paths.md)
+- [Staff](0200-Staff.md)
+- [Utilities](0201-Utilities.md)
+- [Metrics](0300-Metrics.md)
+- [Events](0301-Events.md)
+- [Immersion](0400-Immersion.md)
+- [Line Of Sight](0401-Line-Of-Sight.md)
+- [Shops](0500-Shops.md)
+- [Tracked Rides](0600-Tracked-Rides.md)
+- [Reversing Coasters](0601-Reversing-Coasters.md)
+- [Calm Rides](0700-Calm-Rides.md)
+- [Thrill Rides](0701-Thrill-Rides.md)
+- [Coasters](0702-Coasters.md)
+- [Transport Rides](0703-Transport-Rides.md)
+- [Water Rides](0704-Water-Rides.md)
+- [Scenarios](0800-Scenarios.md)
+- [Blueprints](0900-Blueprints.md)
+- [Mods](1000-Mods.md)
+- [Outro](9999-Outro.md)
