@@ -21,4 +21,12 @@ Each shop attracts up to 5 extra guests, depending on its satisfaction rating.
 
 Park's overall rating is used *roughly* as a multiplier (~half the guests at 50% rating), but can't drop below 15%.
 
-*Technical:* Park.calculateMaxGuestCount
+*Technical:* `Park.calculateMaxGuestCount`
+
+## Park entrance fee
+Generally it's good to leave park entrance fee at default value of $1 and rely on ride fees,
+but the scenarios will occasionally ask you to build a park where the rides are free.
+
+In such case you can set the park entrance fee to roughly 2x of sum of all rides' would-be admission fees.
+
+*Technical:* `Park.calculateValueFor`

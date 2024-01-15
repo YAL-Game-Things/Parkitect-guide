@@ -3,7 +3,7 @@ A coaster is complete if the train makes it back to the station. So why make a w
 Here's the deal:
 
 -  You cannot have chainlifts in a reversing coaster because they'll stop the train from going back.
--  You can have LSMs in a reversing coaster because they work in both directions.
+-  You can have LSMs in a reversing coaster because they don't stop the train on the way back.
 -  You cannot have multiple trains in a reversing coaster for obvious reasons.
 -  This only works with "conventional" coasters - no "powered" rides like Log Flume or most of the "scenic rides".
 

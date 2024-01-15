@@ -7,12 +7,18 @@ A single tile of queue fits 3 visitors and you might get an extra visitor at the
 
 You'll generally want the queue line to be long enough to fit one batch of a visitors - so if a ride fits 20 guests, you'll want 7 tiles of queue. You can always have more, but be careful - if guests wait for too long in the queue, they might get bored and leave ("I hope X will be worth the long queue time!" means you're 3/4 of the way there).
 
+Like many things in this game, maximum queuing time formally depends on a handful of factors (like guest's patience, ride's intensity relative to their preferences, or whether there's an entertainer cheering them on), but it's easier to not make your queues too long.
+
+*Technical:* `Attraction.calculateMaxQueueingTime`
+
 ## Benches
 Guests will look for a bench so it on when tired, and can leave the park if they don't find one.
 
 Guests also like to take a seat when eating, which is a good excuse to build some sort of a seating area close to your shops.
 
 ![](img/shops-1.jpg)
+
+Aside: holding Shift while placing path attachments places them at all available sides of a tile at once, which is convenient for benches.
 
 ## Signs
 Signs allow you to control where people can and cannot go - be it guests or staff. They block specified groups from passing below them from their facing direction, which is great for one-directional paths.

@@ -10,6 +10,8 @@ If a guest has a map, they might open the map and look at where they need to go 
 ## Cash machine
 If a guest runs out of the money, they will generally start walking home, *but*: if there's a cash machine, they might get some money out of it and stay for a little bit more.
 
+A guest is allowed to spend between 140 and 280 currency units total, depending on their generosity (technical: `Person.getMoneyLimit`).
+
 ## Toilets
 Guests will not pee themselves too easily, but still it's good to have a toilet once in a while - especially since this means that each individual toilet will have to be cleaned less often, on average.
 

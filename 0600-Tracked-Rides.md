@@ -1,11 +1,13 @@
 **Key takeaway:** an exciting ride should do most of the things that its kind can do - if it can do inversions, have a loop or two; if it can go fast, have it go fast at some point; if it can do sharp turns, have a couple of those. Descriptions of rides usually hint at what the game expects you to do.
 
-The actual [boring math](https://parkitect.fandom.com/wiki/Coaster%5FStat%5FCalculation%5FGuide#Intrinsic%5FExcitement) (warning: fandom dot com) behind calculations involves numerous rules and graphs.
+~~The actual [boring math](https://parkitect.fandom.com/wiki/Coaster%5FStat%5FCalculation%5FGuide#Intrinsic%5FExcitement) (warning: fandom dot com) behind calculations involves numerous rules and graphs.~~
+
+**Update:** if you'd like a more convenient exploration of ride metrics, I made a mod for it
+([GitHub](https://github.com/YAL-Game-Things/Parkitect-Advanced-Tracked-Ride-Stats), [Steam workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3137101228)).
 
 I'll summarize the important parts:
 
 ## Track Builder window
-
 Note that:
 1. Some rides have enough different parts on the right that a little scrollbar appears
 2. Some parts have controls (like target velocity for brakes) that appear on the bottom of the window, and availability of these can vary by ride type.
@@ -14,10 +16,11 @@ Note that:
 Apart of depending on whether you're meeting expectations for the ride type, there are also some contributing factors:
 -  **Decoration**  
 	Per earlier, decoration rating of ride and/or queue can increase excitement.  
-	You can view per-segment decoration ratings in the Graphs tab.
+	You can view per-segment decoration ratings in the Graphs tab.  
+	Maximum decoration contribution varies by ride type.
 -  **Ride length**  
 	Tracked rides that are less than 35 seconds long are penalized, so it's good to not make your rides *too* short.  
-	Technically rides have optimal length that adds a little excitement, but the bonus is so small that it's not worth pursuing.  
+	Technically rides have optimal length that adds a little excitement, but the bonus is so small that it's usually not worth pursuing.  
 -  **Intensity**  
 	Rides with intensity above 90 are also penalized, though the effect is not noticeable unless you go way overboard with it.
 -  **Underground transitions**  
@@ -26,6 +29,8 @@ Apart of depending on whether you're meeting expectations for the ride type, the
 -  **Cars per train**    
 	You get +1 excitement for every car in a train (set in Settings tab), up to +5.  
 	Having more cars per train is also good in general (more on this shortly).
+
+*Technical:* `TrackedRideStats.calculateRatings`
 
 ## Intensity
 Ride intensity is affected by:
@@ -47,6 +52,23 @@ Nausea for tracked rides is affected by:
 	Roughly +3 nausea per inversion, caps at +40.
 -  **Number of drops**  
 	+2 at 5 drops, +6 at 10 drops, and +10 at 15 drops - in other words, it's hard to mess up your coaster with drops.
+
+## Pricing
+Each visitor decides their perceived value for a ride based on a handful of factors
+like its intensity relative to their preferences, generosity, or rain protection during a rain,
+but overall you can set the ride entrance fees to 15-20% of their excitement
+(so if a ride has 60 excitement, you can charge $12 for it) and no one will complain.
+https://github.com/YAL-Game-Things/Parkitect-What-Is-Worth
+*Technical:* `Attraction.calculateValueFor`
+
+## Rain protection
+A ride is considered to be officially rain-protected if 80% of its track has roofing over it.
+
+Rain-protected rides will continue to operate during thunderstorms, which is convenient for certain scenarios.
+
+Partial rain protection will still count for purposes of guests' interest during normal rain.
+
+Don't beat yourself too hard over how this looks - most of the real-life "rain-protected" coasters sit inside a hangar of sorts.
 
 ## Cars per train
 As the general rule, the more visitors your ride can fit at a time, the better.
@@ -70,12 +92,12 @@ You can have more than one set of stations on a ride, which makes it more of a t
 Having multiple stations causes ride stats to be unstable (as stats from the two segments interfere with each other).
 
 ## Auto-connect
-To make it a little easier to build rides, the game is willing to auto-connect tracks within +-1 vertical unit (typically 1/4 of a tile) of destination altitude.
+To make it a little easier to build rides, the game is willing to auto-connect tracks within ±1 vertical unit (typically 1/4 of a tile) of destination altitude.
 
 This can be used for several things:
 - **Sharper slopes/drops**  
 	![](img/steep-slopes.jpg)
-	For example, the steepest 2-tile flat↔flat transition that Wild Mouse usually allows is +-1 tile, but you can scale 1.5 tiles this way.
+	For example, the steepest 2-tile flat↔flat transition that Wild Mouse usually allows is ±1 tile, but you can scale ±1.5 tiles this way.
 - **"Speed bumps"**  
 	Each counts as a drop.  
 	![](img/speed-bumps.jpg)  
@@ -83,7 +105,8 @@ This can be used for several things:
 - **Mini-drops**  
 	Each counts as a drop and can be used to quickly add underground transitions.  
 	![](img/mini-dips.jpg)  
-	Add 3 flat tiles, then replace the first two by slope down + flat (flat tile will become a short slope up)
+	Add 3 flat tiles, then replace the first two by slope down + flat (flat tile will become a short slope up)  
+	**Remark:** if the tunnel entrance is on the same or next track piece after the one with tunnel exit, the two may count as a single tunnel section - add one or more non-tunnel tile between such sections.
 - **Sloped curves and half-helixes for rides that don't have them**  
 	Good for compact builds, but also good for just building cool-looking water rides.
 	![](img/fake-half-helix.jpg)  
